@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Учебный материал</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f9f9f9;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .block {
+            width: 90%;
+            max-width: 700px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #333;
+            background-size: cover;
+            min-height: 200px;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin: 5px 0 10px;
+            color: #000;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            resize: vertical;
+            min-height: 100px;
+            overflow-y: auto;
+            height: calc(100% - 44px);
+            background-color: #fff;
+            color: #000;
+        }
+
+        #pratiqueBlock {
+            min-height: auto;
+            padding: 10px;
+        }
+
+        #pratiqueBlock img {
+            max-width: 50%;
+            max-height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 10px auto;
+        }
+
+        .arrow-button {
+            background-color: transparent;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            color: #888;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .arrow-button:hover {
+            color: #555;
+        }
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        .block-content {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .expand-button {
+            background-color: transparent;
+            border: none;
+            color: rgba(76, 175, 80, 0.5);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .expand-button:hover {
+            color: rgba(62, 142, 65, 0.8);
+        }
+
+        .time-slider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .time-display {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="block" id="onCommenceBlock">
+            <h2>Écoutez et répétez)</h2>
+            <audio class="audio-player" controls>
+                <source src="frenchphrases.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает элемент audio.
+            </audio>
+            <button class="expand-button" data-target="onCommenceBlock">️</button>
+        </div>
+
+        <div class="block" id="vocabulaireBlock">
+            <h2>Vocabulaire</h2>
+            <img src="https://i.ibb.co/5dDCvZg/2.png" alt="Vocabulaire Image" style="width: 60%;">
+            <button class="expand-button" data-target="vocabulaireBlock">️</button>
+        </div>
+
+        <div class="block" id="dialogueBlock">
+            <h2>Dialogues</h2>
+            <textarea id="dialogueInput" rows="6">
+A: Bonjour! Quel jour sommes-nous aujourd’hui?
+B: Bonjour! Aujourd’hui, c’est lundi.
+A: Et demain, c’est quel jour?
+B: Demain, c’est mardi.
+A: Et après-demain?
+B: Après-demain, c’est mercredi.
+A: D’accord. Et le week-end, c’est quels jours?
+B: Le week-end, c’est samedi et dimanche.
+A: Merci!
+            </textarea>
+            <button class="expand-button" data-target="dialogueInput">️</button>
+        </div>
+
+        <div class="block" id="audioBlock2">
+            <h2>Audio 2</h2>
+            <audio class="audio-player" controls>
+                <source src="thetimeinfrench.mp3" type="audio/mpeg">
+                <source src="thetimeinfrench.mp3" type="audio/ogg">
+                Ваш браузер не поддерживает элемент audio.
+            </audio>
+            <button class="expand-button" data-target="audioBlock2">️</button>
+        </div>
+
+        <div class="block" id="newBlock1">
+            <h2>Quelle heure est-il ?</h2>
+            <textarea id="newBlockInput1" rows="6">
+1:00 (Il est une heure)
+1:05 (Il est une heure cinq)
+1:10 (Il est une heure dix)
+1:15 (Il est une heure et quart)
+1:20 (Il est une heure vingt)
+1:25 (Il est une heure vingt-cinq)
+1:30 (Il est une heure et demie)
+1:35 (Il est deux heures moins vingt-cinq)
+1:40 (Il est deux heures moins vingt)
+1:45 (Il est deux heures moins le quart)
+1:50 (Il est deux heures moins dix)
+1:55 (Il est deux heures moins cinq)</textarea>
+            <button class="expand-button" data-target="newBlockInput1">️</button>
+        </div>
+
+        <div class="block" id="newBlock2">
+            <h2>Quelle heure est-il ?</h2>
+            <div class="time-slider">
+                <button class="arrow-button arrow-left" onclick="changeTime(-1)">❮</button>
+                <span class="time-display" id="timeDisplay"></span>
+                <button class="arrow-button arrow-right" onclick="changeTime(1)">❯</button>
+            </div>
+            <button class="expand-button" data-target="newBlock2">️</button>
+        </div>
+
+        <div class="block" id="discussionBlock">
+            <h2>Discussion</h2>
+            <textarea id="discussionInput" rows="6">
+- the French alphabet
+- "Hi" / "Hello"
+- "How much is it?"
+- "How are you?"
+- "What time is it?"
+- It's a quarter past 3.
+- "The days of the week"
+- Count from 1 - 30.
+- "My name is Lana"
+- "It's 5 euros."
+- "I'm fine. And you?"
+- "Very good!"
+- "What day is it today?"
+- "How do you spell it?"
+- "Thank you"
+- "Ok, I'll take it"
+- "Good bye"
+- It's half past nine.
+- "What's your name?" (x2)
+- "See you tomorrow"
+- "Today"
+- "sir, madame"
+- "It's too expensive."
+- "the weekend"
+            </textarea>
+            <button class="expand-button" data-target="discussionInput">️</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blockIds = ['onCommenceBlock', 'audioBlock2', 'vocabulaireBlock', 'dialogueBlock', 'newBlock1', 'newBlock2', 'discussionBlock'];
+
+            function generateGradient() {
+                const hue = Math.floor(Math.random() * 360);
+                const saturation = 70;
+                const lightness = 85;
+
+                return `linear-gradient(to right, hsl(${hue}, ${saturation}%, ${lightness}%), white)`;
+            }
+
+            blockIds.forEach(blockId => {
+                const block = document.getElementById(blockId);
+                block.style.backgroundImage = generateGradient();
+            });
+
+            const expandButtons = document.querySelectorAll('.expand-button');
+            expandButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetId = button.dataset.target;
+                    const textarea = document.getElementById(targetId);
+
+                    if (textarea) {
+                        if (textarea.style.height === 'auto' || textarea.style.height === '') {
+                            textarea.style.height = textarea.scrollHeight + "px";
+                        } else {
+                            textarea.style.height = '';
+                        }
+                    }
+                });
+            });
+
+            const timeDisplay = document.getElementById('timeDisplay');
+            const times = [
+                "1:00", "1:05", "1:10", "1:15", "1:20", "1:25", "1:30", "1:35", "1:40", "1:45", "1:50", "1:55",
+                "2:00", "2:05", "2:10", "2:15", "2:20", "2:25", "2:30", "2:35", "2:40", "2:45", "2:50", "2:55",
+                "3:00", "3:05", "3:10", "3:15", "3:20", "3:25", "3:30", "3:35", "3:40", "3:45", "3:50", "3:55",
+                 "4:00" // Добавьте больше времени по желанию
+            ];
+            let currentTimeIndex = 0;
+
+            function updateTimeDisplay() {
+                timeDisplay.textContent = times[currentTimeIndex];
+            }
+
+            window.changeTime = function(direction) {
+                currentTimeIndex += direction;
+                if (currentTimeIndex < 0) {
+                    currentTimeIndex = times.length - 1;
+                } else if (currentTimeIndex >= times.length) {
+                    currentTimeIndex = 0;
+                }
+                updateTimeDisplay();
+            };
+
+            updateTimeDisplay();
+
+
+            const pictures = [
+                "https://i.ibb.co/gFQkWpTC/1.png",
+                "https://i.ibb.co/bRm101ZX/2.png",
+                "https://i.ibb.co/zWFZvJGv/3.png",
+                "https://i.ibb.co/5Csqhvj/4.png",
+                "https://i.ibb.co/N6gGCfbs/5.png",
+                "https://i.ibb.co/5WvmqHYN/6.png"
+            ];
+
+            let currentPictureIndex = 0;
+            const pictureImg = document.querySelector('#pratiqueBlock img');
+
+            function updatePicture() {
+                pictureImg.src = pictures[currentPictureIndex];
+            }
+
+            window.changePicture = function(direction) {
+                currentPictureIndex += direction;
+                if (currentPictureIndex < 0) {
+                    currentPictureIndex = pictures.length - 1;
+                } else if (currentPictureIndex >= pictures.length) {
+                    currentPictureIndex = 0;
+                }
+                updatePicture();
+            };
+
+            updatePicture();
+        });
+    </script>
+
+</body>
+</html>
